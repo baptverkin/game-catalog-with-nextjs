@@ -71,13 +71,17 @@ const Home: NextPage<myReactComponent> = ({games}) => {
       {games.map((games, index) => {
         return (
           <Card style={{ width: '18rem' }} key={index} bg="light">
+            <a href={`/games/${games.slug}`}>
             <Card.Img variant="top" src={games.cover?.url} width="250px" height="350px"/>
             <Card.Body>
               <Card.Title>{games.name}</Card.Title>
 
             </Card.Body>
+            </a>
             <Card.Footer background-color="#fff" >
+              <a href={`/games/${games.slug}`}>
               <Button variant="primary">Learn more</Button>
+              </a>
               </Card.Footer>
           </Card>
         )
