@@ -37,7 +37,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const response = await fetch("http://videogame-api.fly.dev/games")
   const gamesResponse = await response.json();
   const games: game[] = gamesResponse.games
-  console.log(games)
+
   return {
     props: {
       games: games,
@@ -46,7 +46,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 }
 
 const Home: NextPage<myReactComponent> = ({games}) => {
-  console.log("test===",games)
+
   return (
     <Layout>
     <div className={styles.container}>
@@ -66,7 +66,7 @@ const Home: NextPage<myReactComponent> = ({games}) => {
         </p>
 
       <div>
-        {console.log("test2", games)}
+
         <Row xs={1} md={2} className="g-4">
       {games.map((games, index) => {
         return (

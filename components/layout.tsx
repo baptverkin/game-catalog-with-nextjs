@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import NavDropdown from 'react-bootstrap/Nav'
 import Nav from 'react-bootstrap/Nav'
 import { Button, Container, Form, FormControl, Navbar } from "react-bootstrap"
+import Image from "next/image"
 
 
 
@@ -50,10 +51,19 @@ export const Layout: React.FC = ({children}) => {
 
 
 
-           <div className="text-end">
-            <button type="button" className="btn btn-outline-light me-2">
+           <div className="text-end" style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+           <a href="/cart">
+             <Image src="/panier.png"  alt="cart_logo" width= "50px" height="50px"/>
+             </a>
+             <a href="/profile">
+             <Image src="/Profile-Pic-Icon.png"  alt="profile_logo" width= "50px" height="50px"/>
+             </a>
+            <Button href="/api/auth/login" type="button" className="btn btn-outline-light me-2">
               Login
-            </button>
+            </Button>
+            <Button type="button" className="btn btn-outline-light me-2" href="/api/auth/logout">
+              Logout
+            </Button>
           </div>
          </div>
       </div>
