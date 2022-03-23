@@ -26,8 +26,5 @@ export default function Profile() {
           </ul>
         </div>
     </Layout>
-
-
-
   );
 }
