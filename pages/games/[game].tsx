@@ -3,6 +3,8 @@ import { GetServerSideProps } from 'next'
 import { Layout } from "../../components/layout";
 import Image from "next/image"
 import { type } from "os";
+import { useDispatch } from 'react-redux';
+
 
 type genre = {
   name: string,
@@ -44,6 +46,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 }
 
+
 const GamePage: React.FC<myReactComponent> = ({game}) => {
   return (
     <Layout>
@@ -71,9 +74,11 @@ const GamePage: React.FC<myReactComponent> = ({game}) => {
         </div>
       )
     })}</h4>
+    <form method="POST" action={`/add-to-cart/${game.slug}`}>
     <a href="/cartvalidation">
       <button >Add to cart</button>
     </a>
+    </form>
     </Layout>
   )
 }
