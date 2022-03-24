@@ -75,9 +75,7 @@ const GamePage: React.FC<myReactComponent> = ({game}) => {
       )
     })}</h4>
     <form method="POST" action={`/add-to-cart/${game.slug}`}>
-    <a href="/cartvalidation">
       <button >Add to cart</button>
-    </a>
     </form>
     </Layout>
   )

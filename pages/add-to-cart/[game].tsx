@@ -27,7 +27,7 @@ type games = {
   game_screenshots: screenshots []
 }
 type myReactComponent = {
-  game: games;
+  games: games;
 }
 
 
@@ -36,9 +36,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const game = await response.json();
 
   const mongodb = await getDatabase();
-  const games = await mongodb.db().collection("cart").insertOne({game: game});
-
-  console.log(game)
+  await mongodb.db().collection("cart").insertOne({game: game});
 
   return {
     props: {
@@ -47,7 +45,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 }
 
-export default function AddToCart() {
+const AddToCart: React.FC<myReactComponent> = ({games}) => {
 
   const { user, error, isLoading } = useUser();
 
@@ -64,10 +62,11 @@ export default function AddToCart() {
         <Layout>
         <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
           <ul>
-          <h3>Thank you {user?.name}, your game has been added to your cart</h3>
+          <h3>Thank you {user?.name}, {games.name} has been added to your cart</h3>
           </ul>
         </div>
     </Layout>
   );
 }
 
+export default AddToCart;
