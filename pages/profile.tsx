@@ -7,6 +7,8 @@ import { Layout } from '../components/layout';
 export default function Profile() {
   const { user, error, isLoading } = useUser();
 
+  console.log(user?.nickname)
+
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
@@ -21,7 +23,8 @@ export default function Profile() {
         <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
           {/* <Image src={user.picture} alt={user.name} layout='fill' /> */}
           <ul>
-          <h3>Full name : {user?.name}</h3>
+          <h3>First name : {user?.given_name}</h3>
+          <h3>Last name : {user?.family_name}</h3>
           <h3>Email : {user?.email}</h3>
           </ul>
         </div>

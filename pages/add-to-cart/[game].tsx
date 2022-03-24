@@ -1,5 +1,5 @@
 import React from "react";
-import { useUser } from '@auth0/nextjs-auth0';
+import { getSession, useUser } from '@auth0/nextjs-auth0';
 import Image from "next/image"
 import { Layout } from '../../components/layout';
 import { GetServerSideProps } from 'next'
@@ -35,9 +35,21 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const response = await fetch(`http://videogame-api.fly.dev/games/slug/${context.params?.game}`)
   const game = await response.json();
 
+  const session = getSession(context.req, context.res)
+
+  console.group("test3", session)
+
   const mongodb = await getDatabase();
+  const findCollection = await mongodb.db()
   await mongodb.db().collection("cart").insertOne({game: game});
 
+
+  if(findCollection.collection(`cart-${session?.user.nickname}`)){
+    await mongodb.db().collection(`cart-${session?.user.nickname}`).insertOne({game: game});
+  }else{
+    await mongodb.db().createCollection(`cart-${session?.user.nickname}`);
+    await mongodb.db().collection(`cart-${session?.user.nickname}`).insertOne({game: game});
+  }
   return {
     props: {
       games: game,
@@ -70,3 +82,7 @@ const AddToCart: React.FC<myReactComponent> = ({games}) => {
 }
 
 export default AddToCart;
+// function getUser(): { user: any; error: any; isLoading: any; } {
+//   console.log(user)
+// }
+
