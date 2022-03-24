@@ -40,12 +40,16 @@ export const Layout: React.FC = ({children}) => {
 
 
         <div className="text-end" style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
-        <a href="/cart">
+          <Link href="/cart">
+        <a >
           <Image src="/panier.png"  alt="cart_logo" width= "50px" height="50px"/>
           </a>
-          <a href="/profile">
+          </Link>
+          <Link href="/profile">
+            <a>
           <Image src="/Profile-Pic-Icon.png"  alt="profile_logo" width= "50px" height="50px"/>
           </a>
+          </Link>
          <Button href="/api/auth/login" type="button" className="btn btn-outline-light me-2">
            Login
          </Button>
@@ -96,12 +100,16 @@ export const Layout: React.FC = ({children}) => {
 
 
            <div className="text-end" style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
-           <a href="/cart">
-             <Image src="/panier.png"  alt="cart_logo" width= "50px" height="50px"/>
-             </a>
-             <a href="/profile">
-             <Image src="/Profile-Pic-Icon.png"  alt="profile_logo" width= "50px" height="50px"/>
-             </a>
+           <Link href="/cart">
+        <a >
+          <Image src="/panier.png"  alt="cart_logo" width= "50px" height="50px"/>
+          </a>
+          </Link>
+          <Link href="/profile">
+            <a>
+          <Image src="/Profile-Pic-Icon.png"  alt="profile_logo" width= "50px" height="50px"/>
+          </a>
+          </Link>
             <Button type="button" className="btn btn-outline-light me-2" href="/api/auth/logout">
               Logout
             </Button>
