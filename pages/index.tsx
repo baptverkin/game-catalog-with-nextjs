@@ -62,7 +62,7 @@ const Home: NextPage<myReactComponent> = ({games}) => {
         </h1>
 
         <p className={styles.description}>
-          Select your favorite game
+          All games at 10€ ! Select your favorite one
         </p>
 
       <div>
