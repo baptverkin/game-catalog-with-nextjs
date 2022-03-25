@@ -84,14 +84,14 @@ const Cart: React.FC<myReactComponent> = ({games}) => {
                   </div>
                   <div className="col-md-6">
                     <h3 >{game.game.name}</h3>
-                      <form method="POST" action={`/delete-cart/${game.game.slug}`}>
+                      <form method="POST" action={`/api/delete-cart/${game.game.slug}`} >
                         <button >
                           Remove from cart
                           </button>
                       </form>
                   </div>
                   <div className="col-md-2">
-                    <h3>10€</h3>
+                    <h3>{10*count}€</h3>
                     <button>-</button>
                     <input value={count} style={{maxWidth: "50px", textAlign: "center"}}/>
                     <button>+</button>

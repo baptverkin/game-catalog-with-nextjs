@@ -40,7 +40,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const session = getSession(context.req, context.res)
   const mongodb = await getDatabase();
-  await mongodb.db().collection(`cart-${session?.user.nickname}`).deleteOne({id: game.id})
+  await mongodb.db().collection(`cart-${session?.user.nickname}`).deleteOne({"game.id": game.id})
 
   const newDb = await mongodb.db().collection(`cart-${session?.user.nickname}`).find().toArray()
 
